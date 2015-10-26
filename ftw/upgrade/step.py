@@ -35,10 +35,11 @@ class UpgradeStep(object):
         obj.__init__(*args, **kwargs)
         return obj()
 
-    def __init__(self, portal_setup, associated_profile=None):
+    def __init__(self, portal_setup, associated_profile=None, base_profile=None):
         self.portal_setup = portal_setup
         self.portal = self.getToolByName('portal_url').getPortalObject()
         self.associated_profile = associated_profile
+        self.base_profile = base_profile
 
     security.declarePrivate('__call__')
     def __call__(self):
